@@ -1,0 +1,90 @@
+.slider {
+  position: relative;
+
+  &--beyond-the-viewport-on-mobile {
+    @include mobile {
+      width: calc(100vw - var(--container-padding-x));
+    }
+  }
+
+  &__list {
+    @include tablet-above {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+
+  &__item {
+    @include square(auto);
+
+    transition: all 0.3s;
+
+    @include tablet {
+      --sliderItemScale: 0.9;
+      --portfolioCardLabelColor: var(--color-gray);
+    }
+
+    @include mobile {
+      --sliderItemScale: 1;
+    }
+
+    &.swiper-slide-next {
+      .portfolio-card {
+        @include tablet {
+          --portfolioCardImageGradientOpacity: 0;
+        }
+
+        @include mobile-s {
+          --portfolioCardImageGradientOpacity: 1;
+        }
+      }
+
+      .portfolio-card__label {
+        @include mobile-s {
+          color: var(--portfolioCardLabelColor);
+        }
+      }
+    }
+
+    &:not(.swiper-slide-next) {
+      scale: var(--sliderItemScale, 1);
+
+      .portfolio-card__label {
+        @include tablet {
+          color: var(--portfolioCardLabelColor);
+        }
+      }
+    }
+
+    &.swiper-slide-active {
+      .portfolio-card {
+        @include mobile {
+          --portfolioCardImageGradientOpacity: 0;
+        }
+      }
+
+      .portfolio-card__label {
+        @include mobile {
+          --portfolioCardLabelColor: var(--color-white);
+        }
+      }
+    }
+  }
+
+  &__scrollbar {
+    @include abs-x;
+
+    top: calc(100% + 24px); // чтобы не писать bottom -24px
+    width: 120px;
+    height: 5px;
+    background-color: var(--color-black-20);
+    border-radius: 20px;
+
+    &-drag {
+      height: 100%;
+      background-color: var(--color-white);
+      border-radius: inherit;
+    }
+  }
+}

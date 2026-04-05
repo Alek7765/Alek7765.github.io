@@ -1,0 +1,87 @@
+.stack {
+  --stackGap: #{fluid(16, 12)};
+
+  @include flex-column(var(--stackGap));
+
+  position: relative;
+  padding-bottom: var(--section-padding-y);
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    height: 110%;
+    width: 20%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(
+        to right,
+        var(--color-black-08) 5%,
+        transparent);
+  }
+
+  &::after {
+    right: -10px;
+    background: linear-gradient(
+        to left,
+        var(--color-black-08) 5%,
+        transparent);
+  }
+
+  &__wrapper-list,
+  &__list {
+    display: flex;
+    gap: var(--stackGap);
+  }
+
+  &__wrapper-list {
+    --stackListDirection: -100%;
+    --stackListAnimationDuration: 50s;
+
+
+    &--row-reverse {
+      --stackListDirection: 100%;
+
+      justify-content: flex-end;
+    }
+
+  }
+
+  &__list {
+    animation-name: running-line;
+    animation-duration: var(--stackListAnimationDuration);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+
+    @keyframes running-line {
+      to {
+        transform: translateZ(0) translateX(var(--stackListDirection));
+      }
+    }
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    border-radius: var(--border-radius);
+    border: var(--border);
+    padding: fluid(8, 6) fluid(15, 8);
+    background-color: var(--color-black-06);
+    color: var(--color-white);
+
+    &::before {
+      @include square(1.2cap);
+
+      content: '';
+      background: url("@/assets/icons/stack-done.svg") 50% / contain no-repeat;
+    }
+  }
+}

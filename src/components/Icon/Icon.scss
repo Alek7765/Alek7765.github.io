@@ -1,0 +1,11 @@
+.icon {
+  --iconSize: #{fluid(18, 16)};
+
+  @include square(var(--iconSize));
+
+  display: inline-flex;
+
+  svg {
+    @include square(100%);
+  }
+}

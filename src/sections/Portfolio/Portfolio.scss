@@ -1,0 +1,14 @@
+.portfolio {
+  padding-bottom: var(--section-padding-y);
+
+    @include tablet-above {
+        display: grid;
+        grid-template-columns: 63% 1fr;
+        gap: fluid-to-laptop(40, 20);
+        padding-inline: fluid-to-laptop(25, 5);
+    }
+
+    @include mobile {
+      padding-bottom: calc(var(--section-padding-y) * 2);
+    }
+}

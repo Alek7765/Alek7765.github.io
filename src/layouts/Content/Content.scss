@@ -1,0 +1,4 @@
+.content {
+    @include flex-column(60px);
+    flex-grow: 1;
+}

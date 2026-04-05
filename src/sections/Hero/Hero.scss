@@ -1,0 +1,82 @@
+.hero {
+  --heroColumn: 42.7%;
+  --heroBgSize: 68%;
+
+  display: grid;
+  grid-template-columns: var(--heroColumn) auto;
+//  padding-top: fluid(189, 10);
+  padding-top: fluid(125, 10);
+  background-color: var(--color-black-08);
+  background-image: url("@/assets/images/hero/hero.jpg");
+  background-blend-mode: lighten;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: var(--heroBgSize);
+
+  @include laptop {
+    --heroColumn: 55%;
+  }
+
+  @include tablet {
+    --heroColumn: 60%;
+    --heroBgSize: 72%;
+  }
+
+  @include mobile-above {
+    min-height: 755px;
+  }
+
+  @include mobile {
+    --heroBgSize: 100%;
+
+    grid-template-columns: 1fr;
+    padding-bottom: fluid(755, 240);
+    background-position: bottom;
+  }
+
+  &__inner,
+  &__header {
+    @include flex-column(fluid(18, 16));
+  }
+
+  &__inner {
+    padding-left: fluid(40, 5);
+
+    @include mobile {
+      align-items: center;
+      text-align: center;
+    }
+  }
+
+  &__header {
+    flex-direction: column-reverse;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    background: linear-gradient(
+        180deg,
+        var(--color-white) 34.62%,
+        var(--color-gray) 90.38%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__name {
+    font-weight: 600;
+    text-wrap: balance;
+    background: linear-gradient(
+            180deg,
+            var(--color-gray) 24.04%,
+            var(--color-white) 62.5%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &__button {
+    margin-top: 10px;
+    width: fit-content;
+  }
+}

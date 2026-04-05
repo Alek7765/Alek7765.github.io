@@ -1,0 +1,58 @@
+.work-experience {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: fluid(60, 35);
+  padding-block: var(--section-padding-y);
+  padding-inline: fluid-to-laptop(50, 5);
+
+  @include mobile-above {
+    place-items: center;
+    column-gap: fluid(100, 10);
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    padding-left: 25px;
+  }
+
+  &::after {
+    @include abs-center;
+
+    content: "";
+    height: 105%;
+    width: fluid(2, 1);
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--color-gray) 10%,
+        var(--color-gray) 90%,
+        transparent 100%
+    );
+
+    @include mobile {
+      left: 0;
+    }
+  }
+
+  &__description {
+    @include flex-column(4px);
+
+    text-align: center;
+
+    @include mobile-above {
+      max-width: 290px;
+    }
+
+    &:first-of-type {
+      @include mobile {
+        order: -2;
+      }
+    }
+  }
+
+  &__label {
+    color: var(--color-gray);
+    text-wrap: balance;
+  }
+}

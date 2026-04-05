@@ -1,0 +1,7 @@
+.logo {
+  flex-shrink: 0;
+
+  &__image {
+    @include square(fluid(64, 52));
+  }
+}

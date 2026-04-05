@@ -1,0 +1,93 @@
+.work-experience-card {
+  --workExperienceCardPadding: 20px;
+  --workExperienceCardDescriptionPaddingLeft: #{fluid(64, 52)};
+
+  @include flex-column(fluid(30, 20));
+
+  position: relative;
+  border-radius: var(--border-radius-l);
+  border: var(--border);
+  background-color: var(--color-black-06);
+  padding: var(--workExperienceCardPadding);
+
+  @include mobile {
+    border-radius: var(--border-radius-m);
+  }
+
+  &::before,
+  &::after {
+    @include abs-y;
+    @include square(24px);
+
+    background-image: url("@/assets/icons/pin.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 2;
+
+    @include mobile {
+      right: calc(100% + var(--container-padding-x) - 4px);
+    }
+  }
+
+  &:nth-child(odd) {
+    &::after {
+      content: "";
+
+      @include mobile-above {
+        left: calc(100% + fluid(38, 1));
+      }
+    }
+  }
+
+  &:nth-child(even) {
+    &::before {
+      content: "";
+
+      @include mobile-above {
+        right: calc(100% + fluid(38, 1));
+      }
+    }
+  }
+
+
+  &__header {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+  }
+
+  &__info {
+    @include flex-column(6px);
+  }
+
+  &__body {
+    @include flex-column(10px);
+
+    @include mobile {
+      padding-right: 0;
+    }
+  }
+
+  &__position,
+  &__description {
+    padding-left: var(--workExperienceCardDescriptionPaddingLeft);
+  }
+
+  &__position {
+    position: relative;
+
+    &::before {
+      @include abs-y;
+      @include square(fluid(10, 8));
+
+      content: '';
+      left: var(--workExperienceCardPadding);
+      border-radius: 50%;
+      background-color: var(--color-gray);
+    }
+  }
+
+  &__description {
+    text-wrap: balance;
+  }
+}

@@ -1,0 +1,28 @@
+.slider-navigation {
+  @include flex-center;
+
+  margin-top: 20px;
+  column-gap: fluid-to-laptop(16, 12);
+
+  &__arrow-button {
+    color: var(--color-white);
+  }
+
+  &__pagination {
+    display: flex;
+    column-gap: 3px;
+
+    &-bullet {
+      width: 16px;
+      height: 4px;
+      background-color: var(--color-black-20);
+      border-radius: 100px;
+      transition-duration: var(--transition-duration);
+
+      &.is-active {
+        width: 23px;
+        background-color: var(--color-white);
+      }
+    }
+  }
+}

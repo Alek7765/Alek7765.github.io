@@ -1,0 +1,15 @@
+.section {
+  @include flex-column(fluid(50, 25));
+
+  &__info {
+    @include flex-column(10px);
+
+    text-align: center;
+  }
+
+  &__title {
+    span {
+      color: var(--color-gray);
+    }
+  }
+}

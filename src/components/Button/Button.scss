@@ -1,0 +1,98 @@
+.button {
+  @include flex-center(true);
+  @include fluid-text(18, 16);
+
+  position: relative;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  user-select: none;
+  cursor: pointer;
+
+  &--animated {
+    --buttonColorPrimary: 250 66% 61%;
+
+    border-radius: 100px;
+    color: var(--color-white);
+    background: hsl(0, 0%, 0%);
+    text-transform: uppercase;
+    z-index: 1;
+
+    @include hover {
+      --buttonColorPrimary: 120 60% 50%;
+      .button__label {
+//        color: hsl(var(--buttonColorPrimary) / 1);
+      }
+    }
+
+    &::before,
+    &::after,
+    .button__label {
+      background-color: inherit;
+      border-radius: inherit;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background-image: conic-gradient(
+          from var(--angle) at 50% 50%,
+          transparent 0%,
+          transparent 33%,
+          hsl(var(--buttonColorPrimary)) 50%,
+          transparent 66%
+      );
+      z-index: -1;
+      animation: rotate 2s infinite linear;
+    }
+
+    &::before {
+      filter: blur(15px);
+    }
+
+    .button__label {
+      @include square(100%);
+
+      position: relative;
+      z-index: 10;
+      padding: 14px 74px;
+      transition-duration: var(--transition-duration);
+    }
+
+    @keyframes rotate {
+      0% {
+        --angle: 0deg;
+      }
+      100% {
+        --angle: 360deg;
+      }
+    }
+
+    &:active {
+      scale: 1.05;
+    }
+  }
+
+  &--black-10 {
+    @include square(44px);
+
+    border: var(--border-width-s) solid var(--color-purple);
+    border-radius: var(--border-radius);
+    background-color: var(--color-black-10);
+
+    @include hover {
+      background-color: var(--color-purple);
+    }
+
+    .icon {
+      --iconSize: 22px;
+    }
+  }
+
+  &__label {
+    position: relative;
+  }
+
+}

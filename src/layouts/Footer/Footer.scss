@@ -1,0 +1,133 @@
+.footer {
+  @include flex-center;
+
+  text-align: center;
+  padding-block: var(--section-padding-y);
+
+  &__inner,
+  &__info,
+  &__contacts {
+    @include flex-column;
+  }
+
+  &__inner {
+    width: 100%;
+    padding-inline: var(--container-padding-x);
+  }
+
+  &__inner {
+    row-gap: 85px;
+    border-radius: var(--border-radius-l);
+    padding-block: var(--section-padding-y);
+    background-color: var(--color-black-06);
+//    background-color: var(--color-black-15);
+  }
+
+  &__info {
+    row-gap: 10px;
+  }
+
+  &__title span {
+    color: var(--color-gray);
+  }
+
+  &__contacts {
+    row-gap: 100px;
+    align-items: center;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+    column-gap: fluid(40, 1);
+
+    @include mobile {
+      width: 100%;
+      flex-direction: column;
+      row-gap: 50px;
+    }
+  }
+
+  &__item {
+    animation: float 3s ease-in-out infinite;
+
+    &:nth-child(1) { animation-delay: 0s; }
+    &:nth-child(2) { animation-delay: 0.5s; }
+    &:nth-child(3) { animation-delay: 1s; }
+
+    @include hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+  }
+
+  &__link {
+    width: 200px;
+    height: 80px;
+    column-gap: 10px;
+    padding: 20px;
+    color: var(--color-white);
+    background-color: var(--color-black-15);
+    transform:
+      rotate(-30deg)
+      skewX(25deg)
+      translate(0, 0)
+    ;
+    box-shadow: -20px 20px 10px rgb(76 76 76 / 0.5);
+    transition-duration: var(--transition-duration-longer);
+
+    @include hover {
+      transform:
+        rotate(-30deg)
+        skew(25deg)
+        translate(20px, -15px);
+        box-shadow: -50px 50px 50px rgb(76 76 76 / 0.5);
+      ;
+      color: var(--color-white);
+      background-color: var(--color-black-20);
+
+      &::before,
+      &::after {
+        background-color: var(--color-gray);
+      }
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: var(--color-black-30);
+      transition-duration: var(--transition-duration-longer);
+    }
+
+    &::before {
+      top: 10px;
+      left: -20px;
+      height: 100%;
+      width: 20px;
+      transform: rotate(0deg) skewY(-45deg);
+    }
+
+    &::after {
+      bottom: -20px;
+      left: -10px;
+      height: 20px;
+      width: 100%;
+      transform: rotate(0deg) skewX(-45deg);
+    }
+
+    &:nth-of-type(2) {
+      @include mobile {
+        width: 100%;
+      }
+    }
+
+    .icon {
+      @include square(44px);
+    }
+  }
+}

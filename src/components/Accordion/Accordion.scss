@@ -1,0 +1,104 @@
+.accordion {
+  margin-top: -4px;
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+
+  &:has(.accordion__arrow) {
+    .accordion__title {
+      padding-right: 0;
+    }
+  }
+
+  &__details {
+    &[open] {
+      .accordion__title {
+        --workExperienceCardDescriptionPaddingLeft: 0;
+
+        &::after {
+          rotate: 0deg;
+        }
+      }
+
+      & + .accordion__content {
+        grid-template-rows: 1fr;
+      }
+
+      .accordion__arrow {
+        rotate: 180deg;
+      }
+    }
+  }
+
+  &__summary {
+    list-style: none; //сработает не во всех браузерах
+    cursor: pointer;
+    user-select: none;
+
+    @include hover {
+      color: var(--color-white);
+
+      .accordion__arrow {
+        color: var(--color-white);
+      }
+    }
+
+    &::-webkit-details-marker { //для всех ост браузеров
+      display: none;
+    }
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    column-gap: fluid(10, 6);
+    padding-left: var(--workExperienceCardDescriptionPaddingLeft);
+    padding-right: 50px; //чтобы если текст будет длинный, не наезжал на плюсик (закр эл-т)
+    color: inherit; // чтобы изменять цвет при наведении наследуем увет от родител
+    transition-duration: var(--transition-duration);
+
+    &::after {
+      rotate: 90deg;
+    }
+  }
+
+  &__subtitle {
+    font-size: 0.75em; // вычислили от родителя 24px title / 18px subtitle
+    font-weight: 500;
+    color: var(--color-gray-60);
+  }
+
+  &__arrow {
+    @include flex-center(true);
+    @include square(44px);
+
+    margin-left: auto;
+    color: var(--color-gray-60);
+    background-color: var(--color-black-08);
+    border: var(--border);
+    border-radius: 50%;
+    transition-duration: var(--transition-duration-longer);
+  }
+
+  &__content {
+    display: grid;
+    grid-template-rows: 0fr; //чобы скрыть аккардион
+    transition-duration: var(--transition-duration-longer);
+
+    &-inner {
+      overflow: hidden;
+    }
+
+    &-body {
+      @include flex-column(10px);
+
+      padding-block: 10px;
+      color: var(--color-white);
+
+      * {
+        letter-spacing: unset;
+        line-height: 1.2;
+      }
+    }
+  }
+}

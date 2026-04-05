@@ -20,9 +20,6 @@
 
     @include hover {
       --buttonColorPrimary: 120 60% 50%;
-      .button__label {
-//        color: hsl(var(--buttonColorPrimary) / 1);
-      }
     }
 
     &::before,
@@ -49,7 +46,7 @@
     }
 
     &::before {
-      filter: blur(15px);
+      filter: blur(10px);
     }
 
     .button__label {

@@ -47,8 +47,9 @@
 
     &::before {
       filter: blur(10px);
-      -webkit-filter: blur(10px);
       will-change: transform;
+      transform: translateZ(0);
+      -webkit-filter: blur(10px);
     }
 
     .button__label {

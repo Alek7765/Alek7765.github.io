@@ -9,7 +9,7 @@ export default defineConfig({
   root: '',
 
   // Базовый путь (если деплой не в корень сайта, поменяй)
-  base: '/',
+  base: '/Alek7765.github.io/',
 
   // Папка с публичными файлами (копируются как есть)
   public: 'public',

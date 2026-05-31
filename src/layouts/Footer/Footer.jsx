@@ -49,7 +49,7 @@ export default () => {
             ))}
           </ul>
           <p className="h5">
-            @ Aleksander Sokolov, <time dateTime={currentYear}>{currentYear}</time>
+            @ Aleksandr Sokolov, <time dateTime={currentYear}>{currentYear}</time>
           </p>
         </div>
       </div>

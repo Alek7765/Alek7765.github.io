@@ -1,6 +1,7 @@
 .portfolio-card {
   --portfolioCardImageGradientOpacity: 1;
   --portfolioCardPadding: #{fluid(15, 8)};
+  --portfolioCardLabelAfterSize: #{fluid(15, 12)};
 
   height: 100%;
   border-radius: var(--border-radius-m);
@@ -22,6 +23,8 @@
     border-radius: var(--border-radius-m);
 
     @include mobile-above {
+      --portfolioCardLabelAfterSize: #{fluid(22, 12)};
+
       position: sticky;
       top: calc(var(--section-padding-y) + 40px);
       align-self: start;
@@ -61,11 +64,22 @@
   }
 
   &__label {
+    @include flex-center;
+    column-gap: fluid-to-laptop(6, 4);
     text-wrap: balance;
     text-align: center;
 
     &::after {
-      content: '⤴' / '';
+      @include square(var(--portfolioCardLabelAfterSize));
+
+      content: '';
+      flex-shrink: 0;
+      translate: 0 -40%;
+      background-image: url("@/assets/icons/link.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      opacity: var(--portfolioCardLabelAfterOpacity, 1);
+      transition-duration: var(--transition-duration);
     }
   }
 }

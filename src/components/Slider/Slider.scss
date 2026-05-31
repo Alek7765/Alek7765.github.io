@@ -18,11 +18,15 @@
   &__item {
     @include square(auto);
 
-    transition: all 0.3s;
+    transition: all 0.2s;
 
     @include tablet {
       --sliderItemScale: 0.9;
-      --portfolioCardLabelColor: var(--color-gray);
+
+      &:not(:hover) {
+        --portfolioCardLabelColor: var(--color-gray);
+        --portfolioCardLabelAfterOpacity: 0.6;
+      }
     }
 
     @include mobile {
@@ -32,6 +36,7 @@
     &.swiper-slide-next {
       .portfolio-card {
         @include tablet {
+          --portfolioCardLabelAfterOpacity: 1;
           --portfolioCardImageGradientOpacity: 0;
         }
 
@@ -67,6 +72,7 @@
       .portfolio-card__label {
         @include mobile {
           --portfolioCardLabelColor: var(--color-white);
+          --portfolioCardLabelAfterOpacity: 1;
         }
       }
     }

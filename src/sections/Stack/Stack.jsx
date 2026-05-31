@@ -35,15 +35,15 @@ export default () => {
             ))}
           </ul>
         </div>
-        <div className="stack__wrapper-list stack__wrapper-list--row-reverse">
-          <ul className="stack__list">
+        <div className="stack__wrapper-list">
+          <ul className="stack__list stack__list--reverse">
             {stackItems.map((item, index) => (
               <li className="stack__item h5" key={index}>
                 <p>{item}</p>
               </li>
             ))}
           </ul>
-          <ul className="stack__list">
+          <ul className="stack__list stack__list--reverse">
             {stackItems.map((item, index) => (
               <li className="stack__item h5" key={index}>
                 <p>{item}</p>

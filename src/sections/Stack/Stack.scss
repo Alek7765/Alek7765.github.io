@@ -7,32 +7,12 @@
   padding-bottom: var(--section-padding-y);
   overflow: hidden;
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    height: 110%;
-    width: 20%;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  &::before {
-    left: 0;
-    background: linear-gradient(
-        to right,
-        var(--color-black-08) 5%,
-        transparent);
-  }
-
-  &::after {
-    right: -10px;
-    background: linear-gradient(
-        to left,
-        var(--color-black-08) 5%,
-        transparent);
-  }
+  mask: linear-gradient(
+    90deg,
+    #0000,
+    var(--color-black-08) 5% 95%,
+    #0000
+  );
 
   &__wrapper-list,
   &__list {
@@ -40,29 +20,20 @@
     gap: var(--stackGap);
   }
 
-  &__wrapper-list {
-    --stackListDirection: -100%;
-    --stackListAnimationDuration: 50s;
-
-
-    &--row-reverse {
-      --stackListDirection: 100%;
-
-      justify-content: flex-end;
-    }
-
-  }
-
   &__list {
     animation-name: running-line;
-    animation-duration: var(--stackListAnimationDuration);
+    animation-duration: 50s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+
+    &--reverse {
+      animation-direction: reverse;
+    }
 
 
     @keyframes running-line {
       to {
-        transform: translateZ(0) translateX(var(--stackListDirection));
+        transform: translateZ(0) translateX(-100%);
       }
     }
   }

@@ -22,7 +22,7 @@ export default () => {
     },
     {
       isApplication: true,
-      title: 'React App - To Do List',
+      title: 'To Do List',
       href: 'https://alek7765.github.io/todo-react/',
       imgSrc: '/src/assets/images/portfolio/portfolio-app-1.jpg',
     },
@@ -47,9 +47,9 @@ export default () => {
       imgSrc: '/src/assets/images/portfolio/portfolio-site-8.jpg'
     },
     {
-        title: 'Matrix',
-        href: 'https://matrixv10.tutorplace.ru/',
-        imgSrc: '/src/assets/images/portfolio/portfolio-site-6.jpg'
+      title: 'Matrix',
+      href: 'https://matrixv10.tutorplace.ru/',
+      imgSrc: '/src/assets/images/portfolio/portfolio-site-6.jpg'
     },
     {
       title: 'Pelvic floor',

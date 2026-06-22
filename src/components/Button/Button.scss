@@ -45,13 +45,13 @@
       animation: rotate 2s infinite linear;
     }
 
-    &::before {
-      filter: blur(15px);
-
-      @supports (-webkit-touch-callout: none) {
-        filter: none !important;
-      }
-    }
+//    &::before {
+//      filter: blur(15px);
+//
+//      @supports (-webkit-touch-callout: none) {
+//        filter: none !important;
+//      }
+//    }
 
     .button__label {
       @include square(100%);
